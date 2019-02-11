@@ -38,11 +38,14 @@ def call(Map args){
 
         
 		def source_dir = "${workspace}\\${artifactId}"
-    
+		
+		writeFile file: "${workspace}\\deploy\\pom.xml", text: libraryResource("vars/deploy/pom.xml")
+		writeFile file: "${workspace}\\deploy\\zip.xml", text: libraryResource("vars/deploy/zip.xml")
+		
 		rtMavenRun (
 			// Tool name from Jenkins configuration.
 			tool: 'MAVEN_TOOL',
-			pom: libraryResource("vars/deploy/pom.xml"),
+			pom: "${workspace}\\deploy\\pom.xml",
 			//goals: 'package',
 			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${source_dir}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
 			// Maven options.
