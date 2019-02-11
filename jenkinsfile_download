@@ -9,7 +9,7 @@ stage("download"){
 	String targetPath = "${workspace}\\downloadHere"
 
 	node("master"){
-		downloadArtifact 	artifactId: "${artifactId}", artifactVersion: "${artifactVersion}, targetPath: "${targetPath}"
+		downloadArtifact artifactId: "${artifactId}", artifactVersion: "${artifactVersion}", targetPath: "${targetPath}"
 	}
 }
 }
