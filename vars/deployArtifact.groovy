@@ -4,8 +4,8 @@ import java.util.Map
 
 def call(Map args){
 
-	String jobName = args.jobName
-	String buildNumber = args.buildNumber
+	//String jobName = args.jobName
+	//String buildNumber = args.buildNumber
 	String artifactId = args.artifactId
 	String artifactVersion = args.artifactVersion
 
