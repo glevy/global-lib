@@ -1,4 +1,3 @@
-#!groovy
 
 def call(Map args){
 
