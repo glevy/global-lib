@@ -1,0 +1,26 @@
+@Library(value="global-lib@master", changelog=false)_
+
+try{
+
+stage("download"){
+
+	String artifactId = "create_artifacts"
+	String artifactVersion = "1.8.49"
+	String targetPath = "${workspace}\\downloadHere"
+
+	node("master"){
+		deployArtifact 	artifactId: "${artifactId}", artifactVersion: "${artifactVersion}, targetPath: "${targetPath}"
+	}
+}
+}
+catch(Exception e){
+    currentBuild.result = 'FAILURE'
+    println "failed with ${e}"
+}
+finally{
+node("master"){
+   // bat "cd %artifactId%"
+   // deleteDir()
+}
+}
+
