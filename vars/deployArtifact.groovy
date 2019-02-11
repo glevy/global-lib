@@ -36,14 +36,14 @@ def call(Map args){
 			snapshotRepo: "repo"
 		) 
 
-		copyArtifacts(
+	/*	copyArtifacts(
 			projectName: jobName,
 			filter: "${artifactId}/**/*.*",
 			fingerprintArtifacts: true,
 			//target: artifactId,
 			flatten: false,
 			selector: specific(buildNumber)
-		)
+		) */
         
 		def source_dir = "${workspace}\\${artifactId}"
     
