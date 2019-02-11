@@ -24,14 +24,8 @@ stage("build"){
 stage("deploy"){
 	
 	node("master"){
-	deployArtifact{
-		jobName = "${JOB_NAME}"
-		buildNumber = "${BUILD_NUMBER}"
-		artifactId = "${env.artifactId}"
-		artifactVersion = "${env.artifactVersion}"
+		deployArtifact 	jobName: "${JOB_NAME}", buildNumber: "${BUILD_NUMBER}", artifactId: "${env.artifactId}", artifactVersion: "${env.artifactVersion}"
 	}
-	}
-
 }
 }
 catch(Exception e){
