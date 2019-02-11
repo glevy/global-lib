@@ -29,6 +29,7 @@ stage("deploy"){
 }
 }
 catch(Exception e){
+    currentBuild.result = 'FAILURE'
     println "failed with ${e}"
 }
 finally{
