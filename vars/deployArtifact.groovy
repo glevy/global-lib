@@ -39,8 +39,8 @@ def call(Map args){
         
 		def source_dir = "${workspace}\\${artifactId}"
 		
-		writeFile file: "${workspace}\\deploy\\pom.xml", text: libraryResource("vars/deploy/pom.xml")
-		writeFile file: "${workspace}\\deploy\\zip.xml", text: libraryResource("vars/deploy/zip.xml")
+		writeFile file: "${workspace}\\deploy\\pom.xml", text: libraryResource("deploy/pom.xml")
+		writeFile file: "${workspace}\\deploy\\zip.xml", text: libraryResource("deploy/zip.xml")
 		
 		rtMavenRun (
 			// Tool name from Jenkins configuration.
