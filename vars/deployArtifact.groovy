@@ -1,3 +1,6 @@
+#!groovy
+
+import java.util.Map
 
 def call(Map args){
 
