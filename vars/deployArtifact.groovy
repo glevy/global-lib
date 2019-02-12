@@ -6,8 +6,8 @@ def call(Map args = [:]){
 
 String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
 String artifactVersion = args.artifactVersion ?: "1.0-SNAPSHOT"
-String sourcePath = args.sourcePath ?: "${artifactId}"
-String groupId = "build.artifacts.${JOB_NAME}.replaceAll('/','.')"
+String sourcePath = args.sourcePath ?: "${JOB_BASE_NAME}"
+String groupId = "build.artifacts.${JOB_NAME.replaceAll('/','.')}"
 
 		try{
 			rtServer (
