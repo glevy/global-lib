@@ -7,6 +7,7 @@ def call(Map args = [:]){
 String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
 String artifactVersion = args.artifactVersion ?: "1.0-SNAPSHOT"
 String sourcePath = args.sourcePath ?: "${artifactId}"
+String groupId = "build.artifacts.${JOB_NAME}.replaceAll('/','.')"
 
 		try{
 			rtServer (
@@ -44,7 +45,7 @@ String sourcePath = args.sourcePath ?: "${artifactId}"
 			tool: 'MAVEN_TOOL',
 			pom: "${workspace}/deploy/pom.xml",
 			//goals: 'package',
-			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${workspace}/${sourcePath}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
+			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${workspace}/${sourcePath}' -Ddeploy.group='${groupId}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
 			// Maven options.
 			opts: "-Xms1024m -Xmx4096m",
 			resolverId: 'lib-resolve',
