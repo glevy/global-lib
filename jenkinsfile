@@ -23,7 +23,7 @@ stage("build"){
 stage("deploy"){
 	
 	node("master"){
-		deployArtifact 	artifactId: "${artifactId}", artifactVersion: "${artifactVersion}"
+		deployArtifact artifactId: "${artifactId}", artifactVersion: "${artifactVersion}"
 	}
 }
 }
