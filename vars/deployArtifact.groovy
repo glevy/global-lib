@@ -32,7 +32,7 @@ String sourcePath = args.sourcePath ?: "${artifactId}"
 			id: 'lib-resolve',
 			serverId: 'Artifactory-test',
 			releaseRepo: 'repo',
-			snapshotRepo: "repo"
+			snapshotRepo: "lib"
 		) 
 
         

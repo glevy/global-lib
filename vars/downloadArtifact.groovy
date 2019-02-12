@@ -28,7 +28,7 @@ def call(Map args = [:]){
 			id: 'lib-resolve',
 			serverId: 'Artifactory-test',
 			releaseRepo: 'repo',
-			snapshotRepo: "repo"
+			snapshotRepo: "lib"
 		) 
 
         
