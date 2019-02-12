@@ -2,7 +2,12 @@
 
 import java.util.Map
 
-def call(){
+def call(Map args = [:]){
+
+	String buildName = args.buildName ?: "${JOB_NAME}"
+	String buildNumber = args.buildNumber ?: "${BUILD_NUMBER}"
+
+
 
 	try{
 			rtServer (
@@ -15,8 +20,8 @@ def call(){
 		rtPromote (
 		// Mandatory parameter
  
-		buildName: "${JOB_NAME}",
-		buildNumber: "${BUILD_NUMBER}",
+		buildName: "${buildName}",
+		buildNumber: "${buildNumber}",
     // Artifactory server ID from Jenkins configuration, or from configuration in the pipeline script
 		serverId: 'Artifactory-test',
     // Name of target repository in Artifactory
