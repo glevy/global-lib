@@ -6,7 +6,7 @@ def call(Map args){
 
 String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
 String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
-String sourcePath = args.sourcePath ?: artifactId
+String sourcePath = args.sourcePath ?: "${artifactId}"
 
 		try{
 			rtServer (
@@ -42,7 +42,7 @@ String sourcePath = args.sourcePath ?: artifactId
 		rtMavenRun (
 			// Tool name from Jenkins configuration.
 			tool: 'MAVEN_TOOL',
-			pom: "${workspace}\\deploy\\pom.xml",
+			pom: "${workspace}/deploy/pom.xml",
 			//goals: 'package',
 			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${workspace}/${sourcePath}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
 			// Maven options.
@@ -52,7 +52,7 @@ String sourcePath = args.sourcePath ?: artifactId
 		)
 
 	}
-	catch(Error e){
+	catch(Exception e){
 		println "failed with ${e}"
 		throw e
 	}
