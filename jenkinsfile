@@ -6,14 +6,14 @@ stage("build"){
 	String artifactVersion = "1.8.${BUILD_NUMBER}"
     
     node("master"){
-        bat "mkdir %artifactId%"
-        bat "echo 'Creating artifacr %BUILD_NUMBER%' > %artifactId%\\1.txt"
-        bat "mkdir %artifactId%\\2"
-        bat "echo 'Creating artifacr %BUILD_NUMBER%' > %artifactId%\\2\\3.txt"
-        bat "mkdir %artifactId%\\4"
-        bat "echo 'Creating artifacr %BUILD_NUMBER%' > %artifactId%\\4\\5.txt"
+        bat "mkdir ${artifactId}"
+        bat "echo 'Creating artifacr ${BUILD_NUMBER}' > ${artifactId}\\1.txt"
+        bat "mkdir ${artifactId}\\2"
+        bat "echo 'Creating artifacr ${BUILD_NUMBER}' > ${artifactId}\\2\\3.txt"
+        bat "mkdir ${artifactId}\\4"
+        bat "echo 'Creating artifacr ${BUILD_NUMBER}' > ${artifactId}\\4\\5.txt"
         bat (
-             script: "robocopy C:\\Jenkins\\plugins\\artifactory %artifactId%\\5 /E",
+             script: "robocopy C:\\Jenkins\\plugins\\artifactory ${artifactId}\\5 /E",
              returnStatus: true
              ) == 0
   
@@ -33,7 +33,7 @@ catch(Exception e){
 }
 finally{
 node("master"){
-    bat "cd %artifactId%"
+    bat "cd ${artifactId}"
     deleteDir()
 }
 }
