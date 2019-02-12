@@ -4,11 +4,10 @@ import java.util.Map
 
 def call(Map args){
 
-	//String jobName = args.jobName
-	//String buildNumber = args.buildNumber
-	String artifactId = args.artifactId
-	String artifactVersion = args.artifactVersion
-	String targetPath = args.targetPath
+
+	String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
+	String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
+	String targetPath = args.targetPath ?: artifactId
 
 		try{
 			rtServer (

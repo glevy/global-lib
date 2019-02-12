@@ -4,26 +4,9 @@ import java.util.Map
 
 def call(Map args){
 
-String sourcePath = ""
-
-	 args.with{
-        if (!artifactId) {
-			Error("Missing parameter: artifactId")
-        }
-        if (!artifactVersion) {
-			Error("Missing parameter: artifactVersion")
-        }
-		if (sourcePath) {
-            sourcePath = args.sourcePath
-        }
-		else{
-			sourcePath = args.artifactId
-		}
-    }
-	
-	String artifactId = args.artifactId
-	String artifactVersion = args.artifactVersion
-	
+String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
+String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
+String sourcePath = args.sourcePath ?: artifactId
 
 		try{
 			rtServer (
@@ -53,8 +36,6 @@ String sourcePath = ""
 		) 
 
         
-		def source_dir = "${workspace}\\${artifactId}"
-		
 		writeFile file: "${workspace}\\deploy\\pom.xml", text: libraryResource("deploy/pom.xml")
 		writeFile file: "${workspace}\\deploy\\zip.xml", text: libraryResource("deploy/zip.xml")
 		
@@ -63,7 +44,7 @@ String sourcePath = ""
 			tool: 'MAVEN_TOOL',
 			pom: "${workspace}\\deploy\\pom.xml",
 			//goals: 'package',
-			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${source_dir}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
+			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${sourcePath}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
 			// Maven options.
 			opts: "-Xms1024m -Xmx4096m",
 			resolverId: 'lib-resolve',
