@@ -2,7 +2,7 @@
 
 import java.util.Map
 
-def call(Map args = [artifactId:"${JOB_BASE_NAME}",artifactVersion:"${BUILD_NUMBER}",sourcePath:"${JOB_BASE_NAME}"]){
+def call(Map args = [:]){
 
 String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
 String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
