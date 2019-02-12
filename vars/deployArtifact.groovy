@@ -4,9 +4,9 @@ import java.util.Map
 
 def call(Map args = [artifactId:"${JOB_BASE_NAME}",artifactVersion:"${BUILD_NUMBER}",sourcePath:"${JOB_BASE_NAME}"]){
 
-//String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
-//String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
-//String sourcePath = args.sourcePath ?: "${artifactId}"
+String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
+String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
+String sourcePath = args.sourcePath ?: "${artifactId}"
 
 		try{
 			rtServer (
