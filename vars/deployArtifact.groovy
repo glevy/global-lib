@@ -36,15 +36,15 @@ String sourcePath = args.sourcePath ?: artifactId
 		) 
 
         
-		writeFile file: "${workspace}\\deploy\\pom.xml", text: libraryResource("deploy/pom.xml")
-		writeFile file: "${workspace}\\deploy\\zip.xml", text: libraryResource("deploy/zip.xml")
+		writeFile file: "${workspace}/deploy/pom.xml", text: libraryResource("deploy/pom.xml")
+		writeFile file: "${workspace}/deploy/zip.xml", text: libraryResource("deploy/zip.xml")
 		
 		rtMavenRun (
 			// Tool name from Jenkins configuration.
 			tool: 'MAVEN_TOOL',
 			pom: "${workspace}\\deploy\\pom.xml",
 			//goals: 'package',
-			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${sourcePath}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
+			goals: " -B clean -Dartifactory.publish.artifacts=true -Dartifactory.publish.buildInfo=true -Ddeploy.dir='${workspace}/${sourcePath}' -Ddeploy.name='${artifactId}' -Ddeploy.version='${artifactVersion}' -P complex_artifact_deploy",
 			// Maven options.
 			opts: "-Xms1024m -Xmx4096m",
 			resolverId: 'lib-resolve',
