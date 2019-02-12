@@ -52,7 +52,7 @@ String sourcePath = args.sourcePath ?: "${artifactId}"
 		)
 
 	}
-	catch(Exception e){
+	catch(Error e){
 		println "failed with ${e}"
 		throw e
 	}
