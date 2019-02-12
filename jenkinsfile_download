@@ -9,7 +9,7 @@ stage("download"){
 	//String targetPath = "downloadHere"
 
 	node("master"){
-		downloadArtifact artifactId: "${artifactId}", artifactVersion: "${artifactVersion}"
+		downloadArtifact artifactId: "${artifactId}"
 	}
 }
 }
