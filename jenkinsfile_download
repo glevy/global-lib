@@ -6,10 +6,10 @@ stage("download"){
 
 	String artifactId = "create_artifacts"
 	String artifactVersion = "1.8.49"
-	String targetPath = "downloadHere"
+	//String targetPath = "downloadHere"
 
 	node("master"){
-		downloadArtifact artifactId: "${artifactId}", artifactVersion: "${artifactVersion}", targetPath: "${targetPath}"
+		downloadArtifact artifactId: "${artifactId}", artifactVersion: "${artifactVersion}"
 	}
 }
 }
