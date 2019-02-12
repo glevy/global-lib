@@ -5,7 +5,7 @@ import java.util.Map
 def call(Map args = [:]){
 
 String artifactId = args.artifactId ?: "${JOB_BASE_NAME}"
-String artifactVersion = args.artifactVersion ?: "${BUILD_NUMBER}"
+String artifactVersion = args.artifactVersion ?: "1.0-SNAPSHOT"
 String sourcePath = args.sourcePath ?: "${artifactId}"
 
 		try{
