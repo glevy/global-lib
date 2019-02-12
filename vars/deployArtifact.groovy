@@ -4,10 +4,26 @@ import java.util.Map
 
 def call(Map args){
 
-	//String jobName = args.jobName
-	//String buildNumber = args.buildNumber
+String sourcePath = ""
+
+	 args.with{
+        if (!artifactId) {
+			Error("Missing parameter: artifactId")
+        }
+        if (!artifactVersion) {
+			Error("Missing parameter: artifactVersion")
+        }
+		if (sourcePath) {
+            sourcePath = args.sourcePath
+        }
+		else{
+			sourcePath = args.artifactId
+		}
+    }
+	
 	String artifactId = args.artifactId
 	String artifactVersion = args.artifactVersion
+	
 
 		try{
 			rtServer (
