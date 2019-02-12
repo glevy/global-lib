@@ -2,8 +2,8 @@
 
 try{
 stage("build"){
-	def artifactId = "${JOB_BASE_NAME}"
-	def artifactVersion = "1.8.${BUILD_NUMBER}"
+	String artifactId = "${JOB_BASE_NAME}"
+	String artifactVersion = "1.8.${BUILD_NUMBER}"
     
     node("master"){
         bat "mkdir %artifactId%"
