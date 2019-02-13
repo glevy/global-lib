@@ -4,7 +4,7 @@ import java.util.Map
 
 def call(Map args = [:]){
 
-	String buildName = args.buildName ?: "${JOB_NAME}"
+	String buildName = args.buildName ?: "${JOB_NAME.replaceAll('/','::')}"
 	String buildNumber = args.buildNumber ?: "${BUILD_NUMBER}"
 
 
