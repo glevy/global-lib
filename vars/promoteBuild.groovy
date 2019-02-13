@@ -25,7 +25,7 @@ def call(Map args = [:]){
     // Artifactory server ID from Jenkins configuration, or from configuration in the pipeline script
 		serverId: 'Artifactory-test',
     // Name of target repository in Artifactory
-    targetRepo: 'lib-release',
+    targetRepo: 'lib-promoted-release',
  
     // Optional parameters
  
@@ -33,7 +33,7 @@ def call(Map args = [:]){
     comment: 'this is the promotion comment',
     status: 'Released',
     // Specifies the source repository for build artifacts.
-    sourceRepo: 'lib',
+    sourceRepo: 'lib-release',
     // Indicates whether to promote the build dependencies, in addition to the artifacts. False by default.
     includeDependencies: true,
     // Indicates whether to fail the promotion process in case of failing to move or copy one of the files. False by default
