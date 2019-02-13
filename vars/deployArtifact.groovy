@@ -25,15 +25,15 @@ String groupId = "build.artifacts.${JOB_NAME.replaceAll('/','.')}"
 		rtMavenDeployer (
 			id: 'lib-deploy',
 			serverId: 'Artifactory-test',
-			releaseRepo: 'lib',
-			snapshotRepo: "lib"
+			releaseRepo: 'lib-release',
+			snapshotRepo: "lib-release"
 		)
 
 		rtMavenResolver (
 			id: 'lib-resolve',
 			serverId: 'Artifactory-test',
 			releaseRepo: 'repo',
-			snapshotRepo: "lib"
+			snapshotRepo: "lib-release"
 		) 
 
         
